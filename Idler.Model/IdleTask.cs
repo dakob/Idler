@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Idler.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,42 +8,31 @@ using System.Timers;
 
 namespace Idler.Model
 {
-    public class IdleTask
+    public class IdleTask: BindableBase
     {
-        public virtual string Name { get; set; }
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                SetProperty(ref name, value);
+            }
+        }
 
         int Seconds { get; set; }
-        public virtual TimeSpan TimeSpan { get; set; }
 
-        public DateTime DateStart { get; set; }
-        public DateTime DateStop { get; set; }
+        private TimeSpan timeSpan;
+        public virtual TimeSpan TimeSpan { get { return timeSpan; } set { SetProperty(ref timeSpan, value); } }
+
+        private DateTime dateStart;
+        public DateTime DateStart { get { return dateStart; } set { SetProperty(ref dateStart, value); } }
+
+        private DateTime dateStop;
+        public DateTime DateStop { get { return dateStop; } set { SetProperty(ref dateStop, value); } }
 
 
-        static Timer t = new Timer(2000);
 
-        public void TimerStart()
-        {
-            DateStart = DateTime.Now;
-            t.AutoReset = true;
-            t.Elapsed += T_Elapsed;
-            t.Start();
-        }
 
-        private void T_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            new Action(() =>
-            {
-                Seconds += 2;
-                
-            }).Invoke();
-        }
-
-        public void TimerStop()
-        {
-            //Date.AddMilliseconds(t.Interval);
-            DateStop = DateTime.Now;
-            t.Stop();
-            TimeSpan = DateStop - DateStart;
-        }
     }
 }

@@ -7,19 +7,9 @@
              xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"   
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800">
-    <!--<UserControl.DataContext>
-        <ViewModels:TasksVM />
-    </UserControl.DataContext>-->
-    
+
     <StackPanel>
-        <ListView  ItemsSource="{Binding Tasks}" Height="150" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView ItemsSource="{Binding Tasks}" Height="150">
+        <ListView ItemsSource="{Binding Tasks}" Height="Auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Task" Width="Auto">
@@ -30,13 +20,30 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     
-                    <!--<GridViewColumn Header="Time" Width="Auto">
+                    <GridViewColumn Header="Time" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label x:Name="Time" Content="{Binding TimeSpan}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Start" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Start" Command="{Binding StartTask}" x:Name="Start" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Pause" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Pause" Command="{Binding PauseTask}" x:Name="Pause" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
                 </GridView>
             </ListView.View>
         </ListView>

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Idler.Model
 {
-    public class TaskCollection: ICollection<IdleTask>
+    public class IdleTasks: ICollection<IdleTask>
     {
         public int Count => Tasks.Count;
 
         public bool IsReadOnly => false;
 
-        ICollection<IdleTask> Tasks { get; set; } = new ObservableCollection<IdleTask>();
+        public ObservableCollection<IdleTask> Tasks { get; set; } = new ObservableCollection<IdleTask>();
 
         public void Add(IdleTask item)
         {

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Idler.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,32 +11,26 @@ namespace Idler.ViewModel
 {
     public class TasksVM : BindableBase
     {
-
+        private IdleTasks idleTasks = new IdleTasks();
+        
         public TasksVM()
         {
-            Tasks = new ObservableCollection<TaskVM>();
+            
             AddTask = new RelayCommand(addTask);
             RemoveTask = new RelayCommand(removeTask);
 
-            Tasks.Add(new TaskVM() { Name = "Damian" });
-            Tasks.Add(new TaskVM() { Name = "Jusia" });
+            idleTasks.Add(new IdleTask() { Name = "Damian" });
+            idleTasks.Add(new IdleTask() { Name = "Jusia" });
            
         }
         public RelayCommand AddTask { get; private set; }
 
         public RelayCommand RemoveTask { get; private set; }
 
-        ObservableCollection<TaskVM> tasks;
-        public ObservableCollection<TaskVM> Tasks
+        public ObservableCollection<IdleTask> Tasks
         {
-            get
-            {
-                return tasks;
-            }
-            set
-            {
-                SetProperty(ref tasks, value);
-            }
+            get => idleTasks.Tasks;
+            set => idleTasks.Tasks = value;
         }
 
 
@@ -46,7 +41,7 @@ namespace Idler.ViewModel
 
         private void addTask()
         {
-            Tasks.Add(new TaskVM() { Name = "The one" });
+            idleTasks.Add(new IdleTask() { Name = "The one" });
 
         }
     }
