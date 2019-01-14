@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Idler.TasksGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Idler"
+             xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"   
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
+        <Grid.DataContext>
+            <ViewModels:TasksVM />
+        </Grid.DataContext>
+        <ListView  ItemsSource="{Binding Tasks}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Text, ElementName=Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Task" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label x:Name="Title" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <!--<GridViewColumn Header="Time" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label x:Name="Time" Content="{Binding TimeSpan}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
