@@ -10,18 +10,20 @@
     <!--<UserControl.DataContext>
         <ViewModels:TasksVM />
     </UserControl.DataContext>-->
-    
+
     <StackPanel>
-        <ListView  ItemsSource="{Binding Tasks}" Height="150" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
         <ListView ItemsSource="{Binding Tasks}" Height="150">
             <ListView.View>
                 <GridView>
+
+                    <GridViewColumn Header="Id" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label x:Name="Id" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
                     <GridViewColumn Header="Task" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -29,14 +31,37 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    
-                    <!--<GridViewColumn Header="Time" Width="Auto">
+
+                    <GridViewColumn Header="Start" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label x:Name="Time" Content="{Binding TimeSpan}" />
+                                <Label x:Name="dStart" Content="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Elapsed" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label x:Name="Elapsed" Content="{Binding TimeSpan, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Header="Start" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="Start" Content="Start" Command="{Binding Start}"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Stop" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="Stop" Content="Stop" Command="{Binding Stop}"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

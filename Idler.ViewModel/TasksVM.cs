@@ -17,8 +17,8 @@ namespace Idler.ViewModel
             AddTask = new RelayCommand(addTask);
             RemoveTask = new RelayCommand(removeTask);
 
-            Tasks.Add(new TaskVM() { Name = "Damian" });
-            Tasks.Add(new TaskVM() { Name = "Jusia" });
+            //Tasks.Add(new TaskVM() { Name = "Damian" });
+            //Tasks.Add(new TaskVM() { Name = "Jusia" });
            
         }
         public RelayCommand AddTask { get; private set; }
@@ -46,7 +46,8 @@ namespace Idler.ViewModel
 
         private void addTask()
         {
-            Tasks.Add(new TaskVM() { Name = "The one" });
+            Tasks.Add(new TaskVM() { Name = "The one", Id = Tasks.Count + 1 });
+
 
         }
     }
