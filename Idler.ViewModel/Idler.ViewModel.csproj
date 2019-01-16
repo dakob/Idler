@@ -61,5 +61,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Idler.Common\Idler.Common.csproj">
+      <Project>{112ba476-73e6-4a99-8fe9-c002d0bc23aa}</Project>
+      <Name>Idler.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Idler.Model\Idler.Model.csproj">
+      <Project>{2bada1b8-7ba1-4c4c-946b-98e2b7213872}</Project>
+      <Name>Idler.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

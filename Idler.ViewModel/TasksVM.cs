@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Idler.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

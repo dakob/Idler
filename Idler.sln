@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.Model", "Idler.Model\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.ViewModel", "Idler.ViewModel\Idler.ViewModel.csproj", "{3CAA7C9B-7933-4363-8891-5D4DAEAA7341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.xUnit", "Idler.xUnit\Idler.xUnit.csproj", "{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idler.xUnit", "Idler.xUnit\Idler.xUnit.csproj", "{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.Common", "Idler.Common\Idler.Common.csproj", "{112BA476-73E6-4A99-8FE9-C002D0BC23AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{112BA476-73E6-4A99-8FE9-C002D0BC23AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{112BA476-73E6-4A99-8FE9-C002D0BC23AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{112BA476-73E6-4A99-8FE9-C002D0BC23AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{112BA476-73E6-4A99-8FE9-C002D0BC23AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

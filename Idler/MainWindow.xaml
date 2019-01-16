@@ -6,14 +6,24 @@
         xmlns:local="clr-namespace:Idler"
         xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800">
+        Title="MainWindow" Height="400" Width="600">
     <Window.DataContext>
         <ViewModels:TasksVM/>
     </Window.DataContext>
-    <StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
         <local:TasksGridView Height="Auto" Width="Auto" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
         <Button HorizontalAlignment="Right"
                     Content="Add"
-                    Command ="{Binding AddTask}" Height="27" Width="65"/>
-    </StackPanel>
+                    Command ="{Binding AddTask}" Height="25" Width="65" Margin="3"/>
+
+            <Button HorizontalAlignment="Right" 
+                    Content="Clear"
+                    Command ="{Binding RemoveTask}" Height="25" Width="65" Margin="3"/>
+        </StackPanel>
+    </Grid>
 </Window>
