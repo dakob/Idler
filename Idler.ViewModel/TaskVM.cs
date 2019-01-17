@@ -1,10 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 
 namespace Idler.ViewModel
 {
@@ -20,19 +16,29 @@ namespace Idler.ViewModel
         int id;
         public int Id { get { return id; } set { SetProperty(ref id, value); } }
 
+        string dateStart;
         public string DateStart
         {
             get
             {
-                return dtStart.ToShortDateString() + "/" + dtStart.ToLongTimeString();
+                return dateStart;
+            }
+            set
+            {
+                SetProperty(ref dateStart, value);
             }
         }
 
+        string timeSpan;
         public string TimeSpan
         {
             get
             {
-                return String.Format("{0}D/{1:0}:{2:0}.{3:0}", tSpan.TotalDays, tSpan.TotalHours, tSpan.TotalMinutes, tSpan.TotalSeconds);
+                return timeSpan;
+            }
+            set
+            {
+                SetProperty(ref timeSpan, value);
             }
         }
 
@@ -60,6 +66,7 @@ namespace Idler.ViewModel
         public void TimerStart()
         {
             dtStart = DateTime.Now;
+            DateStart = dtStart.ToShortDateString() + "/" + dtStart.ToLongTimeString();
             t.AutoReset = true;
             t.Elapsed += T_Elapsed;
             t.Start();
@@ -69,16 +76,17 @@ namespace Idler.ViewModel
         {
             new Action(() =>
             {
-                
+                tSpan = DateTime.Now - dtStart;
+                TimeSpan = String.Format("{0:0}D/{1:0}:{2:0}.{3:0}", tSpan.TotalDays, tSpan.TotalHours, tSpan.TotalMinutes, tSpan.TotalSeconds);
 
             }).Invoke();
         }
 
         public void TimerStop()
         {
-            dtStop = DateTime.Now;
             t.Stop();
-            tSpan = dtStop - dtStart;
+            tSpan = DateTime.Now - dtStart;
+            TimeSpan = String.Format("{0:0}D/{1:0}:{2:0}.{3:0}", tSpan.TotalDays, tSpan.TotalHours, tSpan.TotalMinutes, tSpan.TotalSeconds);
         }
 
     }

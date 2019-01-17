@@ -41,15 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindableBase.cs" />
     <Compile Include="IdleTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IdleTasks.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Idler.Common\Idler.Common.csproj">
-      <Project>{112ba476-73e6-4a99-8fe9-c002d0bc23aa}</Project>
-      <Name>Idler.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
