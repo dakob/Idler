@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Idler.Common;
+using Idler.Timer;
 using System;
 using System.Timers;
 
@@ -13,8 +15,9 @@ namespace Idler.ViewModel
 
         }
 
-        int id;
-        public int Id { get { return id; } set { SetProperty(ref id, value); } }
+        public int Id { get; set; }
+
+        public Enums.Status Status { get; set; } = Enums.Status.NotStarted;
 
         string dateStart;
         public string DateStart
@@ -25,7 +28,10 @@ namespace Idler.ViewModel
             }
             set
             {
-                SetProperty(ref dateStart, value);
+                if (String.IsNullOrEmpty(dateStart))
+                {
+                    SetProperty(ref dateStart, value);
+                }
             }
         }
 
@@ -56,38 +62,48 @@ namespace Idler.ViewModel
         public RelayCommand Stop { get; private set; }
 
         int Seconds { get; set; }
-        private TimeSpan tSpan;
-        private DateTime dtStart;
-        private DateTime dtStop;
+        internal TimeSpan TSpan;
 
+        private DateTime? dtStart = null;
+        internal DateTime DTStart
+        {
+            get
+            { return dtStart.Value; }
+            set
+            {
+                if (dtStart == null)
+                {
+                    dtStart = value;
+                }
+            }
+        }
+        internal DateTime DTStop;
 
-        static Timer t = new Timer(2000);
+        #region Timer
 
+        TaskTimer TaskTimer;
         public void TimerStart()
         {
-            dtStart = DateTime.Now;
-            DateStart = dtStart.ToShortDateString() + "/" + dtStart.ToLongTimeString();
-            t.AutoReset = true;
-            t.Elapsed += T_Elapsed;
-            t.Start();
-        }
-
-        private void T_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            new Action(() =>
+            if (Status == Enums.Status.Pause || Status == Enums.Status.NotStarted)
             {
-                tSpan = DateTime.Now - dtStart;
-                TimeSpan = String.Format("{0:0}D/{1:0}:{2:0}.{3:0}", tSpan.TotalDays, tSpan.TotalHours, tSpan.TotalMinutes, tSpan.TotalSeconds);
-
-            }).Invoke();
+               Status = Enums.Status.Run;
+                DTStart = DateTime.Now;
+                DateStart = DTStart.ToShortDateString() + "/" + DTStart.ToLongTimeString();
+                TaskTimer = new TaskTimer();
+                TaskTimer.Run(this);
+            }
         }
 
         public void TimerStop()
         {
-            t.Stop();
-            tSpan = DateTime.Now - dtStart;
-            TimeSpan = String.Format("{0:0}D/{1:0}:{2:0}.{3:0}", tSpan.TotalDays, tSpan.TotalHours, tSpan.TotalMinutes, tSpan.TotalSeconds);
+            if (Status == Enums.Status.Run)
+            {
+                TaskTimer.Stop();
+                Status = Enums.Status.Pause;
+            }
         }
+
+        #endregion
 
     }
 }

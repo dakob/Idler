@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Idler.Model;
 using System;
 using System.Collections.Generic;
@@ -47,9 +48,15 @@ namespace Idler.ViewModel
 
         private void addTask()
         {
+            Messenger.Default.Send(new ShowChildWindowMessage());
             Tasks.Add(new TaskVM() { Name = "The one", Id = Tasks.Count + 1 });
 
 
         }
     }
+
+
+    public class ShowChildWindowMessage : MessageBase { }
+    public class HideChildWindowMessage : MessageBase { }
+
 }

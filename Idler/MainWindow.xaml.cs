@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Idler.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,19 @@ namespace Idler
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AddTaskView addTaskView;
+
         public MainWindow()
         {
             InitializeComponent();
+            Closing += (s, e) => ViewModelLocator.Cleanup();
+            Loaded += (s, e) =>
+            {
+                addTaskView = new AddTaskView(this);
+            };
+
+            Messenger.Default.Register<ShowChildWindowMessage>(this, (msg) => addTaskView.ShowDialog());
+            Messenger.Default.Register<HideChildWindowMessage>(this, (msg) => addTaskView.Hide());
         }
     }
 }

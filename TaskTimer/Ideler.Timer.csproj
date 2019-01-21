@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CAA7C9B-7933-4363-8891-5D4DAEAA7341}</ProjectGuid>
+    <ProjectGuid>{1B3CC672-5379-433E-A8B0-6064ADB8EFFB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Idler.ViewModel</RootNamespace>
-    <AssemblyName>Idler.ViewModel</AssemblyName>
+    <RootNamespace>TaskTimer</RootNamespace>
+    <AssemblyName>TaskTimer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,18 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,23 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TasksVM.cs" />
     <Compile Include="TaskTimer.cs" />
-    <Compile Include="TaskVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Idler.Common\Idler.Common.csproj">
-      <Project>{c77d5efa-ee33-4805-b9d8-88e62c09e3d8}</Project>
-      <Name>Idler.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Idler.Model\Idler.Model.csproj">
-      <Project>{2bada1b8-7ba1-4c4c-946b-98e2b7213872}</Project>
-      <Name>Idler.Model</Name>
+    <ProjectReference Include="..\Idler.ViewModel\Idler.ViewModel.csproj">
+      <Project>{3caa7c9b-7933-4363-8891-5d4daeaa7341}</Project>
+      <Name>Idler.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
