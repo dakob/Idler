@@ -8,13 +8,13 @@ namespace Idler.xUnit
 {
     public class UnitTest1
     {
-        [Fact]
-        public void xTask()
-        {
-            IdleTask it = new IdleTask();
-            it.TimerStart();
-            Thread.Sleep(10000);
-            it.TimerStop();
-        }
+        //[Fact]
+        //public void xTask()
+        //{
+        //    IdleTask it = new IdleTask();
+        //    it.TimerStart();
+        //    Thread.Sleep(10000);
+        //    it.TimerStop();
+        //}
     }
 }

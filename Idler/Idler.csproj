@@ -78,6 +78,9 @@
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="WindowHandling\GreyOutAdorner.cs" />
+    <Compile Include="WindowHandling\SpecialDesignWindowHandling.cs" />
+    <Compile Include="WindowHandling\WindowHandlingStrategy.cs" />
     <Page Include="AddTaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,6 +133,10 @@
     <ProjectReference Include="..\Idler.ViewModel\Idler.ViewModel.csproj">
       <Project>{3caa7c9b-7933-4363-8891-5d4daeaa7341}</Project>
       <Name>Idler.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{54906e04-3b86-43eb-b85d-844935f46414}</Project>
+      <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using Idler.Common;
 using Idler.Timer;
+using Shared;
 using System;
 using System.Timers;
 

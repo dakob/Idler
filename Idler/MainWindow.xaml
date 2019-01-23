@@ -16,7 +16,7 @@
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <local:TasksGridView Height="Auto" Width="Auto" />
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <DockPanel Name="DockPanel" Grid.Row="2">
         <Button HorizontalAlignment="Right"
                     Content="Add"
                     Command ="{Binding AddTask}" Height="25" Width="65" Margin="3"/>
@@ -24,6 +24,6 @@
             <Button HorizontalAlignment="Right" 
                     Content="Clear"
                     Command ="{Binding RemoveTask}" Height="25" Width="65" Margin="3"/>
-        </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>

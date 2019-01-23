@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.ViewModel", "Idler.Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idler.xUnit", "Idler.xUnit\Idler.xUnit.csproj", "{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idler.Common", "Idler.Common\Idler.Common.csproj", "{C77D5EFA-EE33-4805-B9D8-88E62C09E3D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{54906E04-3B86-43EB-B85D-844935F46414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{745C0D8F-B6D8-42EA-B6F2-8F8FBBEF8EE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C77D5EFA-EE33-4805-B9D8-88E62C09E3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C77D5EFA-EE33-4805-B9D8-88E62C09E3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C77D5EFA-EE33-4805-B9D8-88E62C09E3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C77D5EFA-EE33-4805-B9D8-88E62C09E3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54906E04-3B86-43EB-B85D-844935F46414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54906E04-3B86-43EB-B85D-844935F46414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54906E04-3B86-43EB-B85D-844935F46414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54906E04-3B86-43EB-B85D-844935F46414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

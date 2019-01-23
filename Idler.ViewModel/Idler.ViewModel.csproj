@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableBase.cs" />
+    <Compile Include="AddTaskVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TasksVM.cs" />
     <Compile Include="TaskTimer.cs" />
@@ -63,13 +63,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Idler.Common\Idler.Common.csproj">
-      <Project>{c77d5efa-ee33-4805-b9d8-88e62c09e3d8}</Project>
-      <Name>Idler.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Idler.Model\Idler.Model.csproj">
       <Project>{2bada1b8-7ba1-4c4c-946b-98e2b7213872}</Project>
       <Name>Idler.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{54906e04-3b86-43eb-b85d-844935f46414}</Project>
+      <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

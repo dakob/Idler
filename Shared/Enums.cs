@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Idler.Common
+namespace Shared
 {
     public class Enums
     {
@@ -15,6 +15,12 @@ namespace Idler.Common
             Pause,
             Stoped
 
+        }
+
+        public enum WindowTypes
+        {
+            AddTask,
+            Settings,
         }
     }
 }
