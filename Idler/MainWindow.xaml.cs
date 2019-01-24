@@ -58,7 +58,7 @@ namespace Idler
             windowHandlingStrategy.HandlingStrategy(obj,
                                                     greyOutAdorner,
                                                     DockPanel,
-                                                    this);
+                                                    this, ((TasksVM)this.DataContext));
         }
 
     }

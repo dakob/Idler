@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Idler.ViewModel"
-        xmlns:local="clr-namespace:Idler"
+        xmlns:vm="clr-namespace:Idler.ViewModel" 
+        xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
         Title="AddTaskView" Height="150" Width="400">
+    <Window.DataContext>
+        <ViewModels:TaskVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10">
         <Label>Task Name</Label>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Name}"></TextBox>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="10"> 
             <Label>Fixed time [h]</Label>

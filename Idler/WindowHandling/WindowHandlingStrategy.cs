@@ -1,4 +1,5 @@
 ﻿using Idler.UIAdorners;
+using Idler.ViewModel;
 using Shared;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,8 @@ namespace Idler.WindowHandling
         public void HandlingStrategy(WindowTypes windowTypes,
                                      GreyOutAdorner adorner,
                                      DockPanel dockPanel,
-                                     Window mainWindow)
+                                     Window mainWindow,
+                                     TasksVM tasksVM)
         {
             IOpenWindow IOpenWindowStrategy = null;
 
@@ -20,7 +22,7 @@ namespace Idler.WindowHandling
             {
 
                 case WindowTypes.AddTask:
-                    IOpenWindowStrategy = new SpecialDesignWindowHandling(mainWindow, adorner, dockPanel);
+                    IOpenWindowStrategy = new SpecialDesignWindowHandling(mainWindow, adorner, dockPanel, tasksVM);
                     break;
 
                 default:

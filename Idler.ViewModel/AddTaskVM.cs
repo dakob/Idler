@@ -14,8 +14,9 @@ namespace Idler.ViewModel
         public RelayCommand CancelCommand { get; private set; }
         public RelayCommand OKCommand { get; private set; }
 
-        public AddTaskVM()
+        public AddTaskVM(TaskVM taskVM)
         {
+            TaskVM = taskVM;
             CancelCommand = new RelayCommand(CancelSpecialDesign);
             OKCommand = new RelayCommand(ApproveSpecialDesign);
 

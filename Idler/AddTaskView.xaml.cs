@@ -21,9 +21,12 @@ namespace Idler
     /// </summary>
     public partial class AddTaskView : Window   
     {
-        public AddTaskView()
+        public AddTaskView( TasksVM tasksVM)
         {
             InitializeComponent();
+            TaskVM taskVM = new TaskVM();
+            DataContext = taskVM;
+            tasksVM.Tasks.Add(taskVM);
         }
 
         public AddTaskView(Window owner)

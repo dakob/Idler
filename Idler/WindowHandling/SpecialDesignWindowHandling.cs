@@ -5,6 +5,7 @@ using System.Windows.Documents;
 using System.Windows;
 using Idler.UIAdorners;
 using Shared;
+using Idler.ViewModel;
 
 namespace Idler.WindowHandling
 {
@@ -13,12 +14,14 @@ namespace Idler.WindowHandling
         private Window mainWindow;
        private DockPanel dockPanel;
         private GreyOutAdorner adorner;
+        TasksVM TasksVM;
 
-        public SpecialDesignWindowHandling(Window mainWindow, GreyOutAdorner adorner, DockPanel dockPanel)
+        public SpecialDesignWindowHandling(Window mainWindow, GreyOutAdorner adorner, DockPanel dockPanel, TasksVM tasksVM)
         {
             this.mainWindow = mainWindow;
             this.dockPanel = dockPanel;
             this.adorner = adorner;
+            TasksVM = tasksVM;
 
             OpenWindow();
         }
@@ -28,7 +31,7 @@ namespace Idler.WindowHandling
 
             AttachAdorner(dockPanel, adorner);
 
-            var addTask = new AddTaskView()
+            var addTask = new AddTaskView(TasksVM)
             {
                 Owner = GetWindow(mainWindow)
             };
