@@ -11,46 +11,33 @@ namespace Idler.ViewModel
 {
     public class AddTaskVM: BindableBase
     {
-        public RelayCommand CancelCommand { get; private set; }
-        public RelayCommand OKCommand { get; private set; }
-
-        public AddTaskVM(TaskVM taskVM)
+        public AddTaskVM()
         {
-            TaskVM = taskVM;
+            TaskVM = new TaskVM();
             CancelCommand = new RelayCommand(CancelSpecialDesign);
             OKCommand = new RelayCommand(ApproveSpecialDesign);
-
         }
+
+        public RelayCommand CancelCommand { get; private set; }
+        public RelayCommand OKCommand { get; private set; }
 
         public TaskVM TaskVM { get; set; }
 
         private void CancelSpecialDesign()
         {
-            ResetInitialData();
-            Messenger.Default.Send(new NotificationMessage("SpecialDesignCommit"));
-            this.GoBackToMainWindow();
-        }
-
-        private void ResetInitialData()
-        {
-            throw new NotImplementedException();
+            TaskVM = null;
+            GoBackToMainWindow();
         }
 
         private void ApproveSpecialDesign()
         {
-            SaveInitData();
-            Messenger.Default.Send(new NotificationMessage("SpecialDesignCommit"));
-            this.GoBackToMainWindow();
-        }
-
-        private void SaveInitData()
-        {
-            throw new NotImplementedException();
+            Messenger.Default.Send<TaskVM>(TaskVM);
+            GoBackToMainWindow();
         }
 
         private void GoBackToMainWindow()
         {
-            Messenger.Default.Send(new NotificationMessage("Close SpecialDesign Window"), "SpecialDesignView");
+            Messenger.Default.Send(new NotificationMessage("CloseWindow"), "AddTaskView");
         }
 
     }

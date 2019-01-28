@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Idler.Timer;
 using Shared;
 using System;
@@ -8,11 +9,13 @@ namespace Idler.ViewModel
 {
     public class TaskVM : BindableBase
     {
+        public RelayCommand CancelCommand { get; private set; }
+        public RelayCommand OKCommand { get; private set; }
+
         public TaskVM()
         {
             Start = new RelayCommand(TimerStart);
             Stop = new RelayCommand(TimerStop);
-
         }
 
         public int Id { get; set; }

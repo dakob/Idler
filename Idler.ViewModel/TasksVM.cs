@@ -20,11 +20,9 @@ namespace Idler.ViewModel
             Tasks = new ObservableCollection<TaskVM>();
             AddTask = new RelayCommand(addTask);
             RemoveTask = new RelayCommand(removeTask);
-
-            //Tasks.Add(new TaskVM() { Name = "Damian" });
-            //Tasks.Add(new TaskVM() { Name = "Jusia" });
-           
+            Messenger.Default.Register<TaskVM>(this, (item) => tasks.Add(item));
         }
+
         public RelayCommand AddTask { get; private set; }
 
         public RelayCommand RemoveTask { get; private set; }
@@ -58,14 +56,7 @@ namespace Idler.ViewModel
         private void addTask()
         {
             Messenger.Default.Send(WindowTypes.AddTask);
-            //Tasks.Add(new TaskVM() { Name = "The one", Id = Tasks.Count + 1 });
-
-
         }
     }
-
-
-    public class ShowChildWindowMessage : MessageBase { }
-    public class HideChildWindowMessage : MessageBase { }
 
 }

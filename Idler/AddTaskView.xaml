@@ -6,9 +6,9 @@
         xmlns:vm="clr-namespace:Idler.ViewModel" 
         xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
-        Title="AddTaskView" Height="150" Width="400">
+        Title="New Task" Height="150" Width="300">
     <Window.DataContext>
-        <ViewModels:TaskVM/>
+        <ViewModels:AddTaskVM/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,12 +16,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10">
-        <Label>Task Name</Label>
-            <TextBox Text="{Binding Name}"></TextBox>
+            <Label>Task Name</Label>
+            <TextBox Text="{Binding TaskVM.Name}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Column="2" Margin="10"> 
+        <StackPanel Grid.Column="2" Margin="10">
             <Label>Fixed time [h]</Label>
             <TextBox></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding OKCommand}" Width="50" Margin="10,5" HorizontalAlignment="Right">OK</Button>
+                <Button Command="{Binding CancelCommand}" Width="50" Margin="1,5" HorizontalAlignment="Right">Cancel</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
