@@ -14,9 +14,9 @@ namespace Idler.ViewModel
 {
     public class TasksVM : BindableBase
     {
-
         public TasksVM()
         {
+
             Tasks = new ObservableCollection<TaskVM>();
             AddTask = new RelayCommand(addTask);
             RemoveTask = new RelayCommand(removeTask);
