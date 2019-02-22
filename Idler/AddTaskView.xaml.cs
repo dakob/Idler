@@ -21,13 +21,9 @@ namespace Idler
     /// </summary>
     public partial class AddTaskView : Window   
     {
-        public AddTaskView( TasksVM tasksVM)
+        public AddTaskView()
         {
             InitializeComponent();
-            TaskVM taskVM = new TaskVM();
-            DataContext = taskVM;
-            tasksVM.Tasks.Add(taskVM);
-
             Messenger.Default.Register<NotificationMessage>(this, "AddTaskView", (o) => this.Close());
         }
     }

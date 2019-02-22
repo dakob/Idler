@@ -13,15 +13,15 @@
             <ListView.View>
                 <GridView>
 
-                    <GridViewColumn Header="Id" Width="Auto">
+                    <!--<GridViewColumn Header="Id" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label x:Name="Id" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
                     
-                    <GridViewColumn Header="Task" Width="Auto">
+                    <GridViewColumn Header="Task" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label x:Name="Title" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />

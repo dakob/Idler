@@ -6,6 +6,7 @@ using System.Windows;
 using Idler.UIAdorners;
 using Shared;
 using Idler.ViewModel;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Idler.WindowHandling
 {
@@ -24,14 +25,16 @@ namespace Idler.WindowHandling
             TasksVM = tasksVM;
 
             OpenWindow();
+            
+            Messenger.Default.Register<NotificationMessage>(this, "AddTaskView", Close);
         }
 
         public void OpenWindow()
         {
-
+            Messenger.Default.Register<NotificationMessage>(this, "AddTaskView", Close);
             AttachAdorner(dockPanel, adorner);
 
-            var addTask = new AddTaskView(TasksVM)
+            var addTask = new AddTaskView()
             {
                 Owner = GetWindow(mainWindow)
             };
@@ -50,8 +53,14 @@ namespace Idler.WindowHandling
         {
             AdornerLayer parentAdorner = AdornerLayer.GetAdornerLayer(dockPanel);
             parentAdorner.Remove(adorner);
+            CloseWindow();
         }
 
+        public void Close(NotificationMessage message)
+        {
+            DettachAdorner(dockPanel, adorner);
+            this.Close();
+        }
 
         public void CloseWindow()
         {
