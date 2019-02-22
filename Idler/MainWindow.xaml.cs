@@ -4,6 +4,7 @@ using Idler.ViewModel;
 using Idler.WindowHandling;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,18 @@ namespace Idler
                                                     greyOutAdorner,
                                                     DockPanel,
                                                     this, ((TasksVM)this.DataContext));
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Messenger.Default.Send<NotificationMessage>(null, "Save state");
+            base.OnClosing(e);
+        }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            Messenger.Default.Send<NotificationMessage>(null, "Get state");
+            base.OnInitialized(e);
         }
 
     }

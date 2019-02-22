@@ -23,8 +23,31 @@ namespace Idler.ViewModel
 
             //Tasks.Add(new TaskVM() { Name = "Damian" });
             //Tasks.Add(new TaskVM() { Name = "Jusia" });
-           
+
+            Messenger.Default.Register<NotificationMessage>(this, "Save state", (message) => SaveState(message));
+            Messenger.Default.Register<NotificationMessage>(this, "Get state", (message) => GetState(message));
         }
+
+        private void SaveState(NotificationMessage message)
+        {
+            IdleTasks tasks = new IdleTasks();
+            foreach (var task in Tasks)
+            {
+                tasks.Add(new IdleTask() { Name = task.Name });
+            }
+            new Serializer().SaveState(tasks);
+        }
+
+        private void GetState(NotificationMessage message)
+        {
+            IdleTasks tasks = new Serializer().GetState();
+            Tasks = new ObservableCollection<TaskVM>();
+            foreach (var task in tasks)
+            {
+                Tasks.Add(new TaskVM() { Name = task.Name });
+            }
+        }
+
         public RelayCommand AddTask { get; private set; }
 
         public RelayCommand RemoveTask { get; private set; }
@@ -63,9 +86,5 @@ namespace Idler.ViewModel
 
         }
     }
-
-
-    public class ShowChildWindowMessage : MessageBase { }
-    public class HideChildWindowMessage : MessageBase { }
 
 }

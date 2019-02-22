@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Idler.Timer;
 using Shared;
 using System;
@@ -12,7 +13,22 @@ namespace Idler.ViewModel
         {
             Start = new RelayCommand(TimerStart);
             Stop = new RelayCommand(TimerStop);
+            OKCommand = new RelayCommand(okCommand);
+            CancelCommand = new RelayCommand(cancelCommand);
 
+        }
+
+
+        public RelayCommand OKCommand { get; private set; }
+        private void okCommand()
+        {
+            Messenger.Default.Send(new NotificationMessage("Close SpecialDesign Window"), "AddTaskView");
+        }
+        public RelayCommand CancelCommand { get; private set; }
+
+        private void cancelCommand()
+        {
+            Messenger.Default.Send(new NotificationMessage("Close SpecialDesign Window"), "AddTaskView");
         }
 
         public int Id { get; set; }

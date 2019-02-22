@@ -27,15 +27,8 @@ namespace Idler
             TaskVM taskVM = new TaskVM();
             DataContext = taskVM;
             tasksVM.Tasks.Add(taskVM);
-        }
 
-        public AddTaskView(Window owner)
-        {
-            InitializeComponent();
-            Owner = owner;
-            Closing += (s, e) =>
-            e.Cancel = true;
-            Messenger.Default.Send(new HideChildWindowMessage());
+            Messenger.Default.Register<NotificationMessage>(this, "AddTaskView", (o) => this.Close());
         }
     }
 }
