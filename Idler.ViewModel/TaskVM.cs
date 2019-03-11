@@ -13,22 +13,7 @@ namespace Idler.ViewModel
         {
             Start = new RelayCommand(TimerStart);
             Stop = new RelayCommand(TimerStop);
-            OKCommand = new RelayCommand(okCommand);
-            CancelCommand = new RelayCommand(cancelCommand);
-
-        }
-
-
-        public RelayCommand OKCommand { get; private set; }
-        private void okCommand()
-        {
-            Messenger.Default.Send(new NotificationMessage("Close SpecialDesign Window"), "AddTaskView");
-        }
-        public RelayCommand CancelCommand { get; private set; }
-
-        private void cancelCommand()
-        {
-            Messenger.Default.Send(new NotificationMessage("Close SpecialDesign Window"), "AddTaskView");
+            Remove = new RelayCommand(RemoveTask);
         }
 
         public int Id { get; set; }
@@ -76,6 +61,13 @@ namespace Idler.ViewModel
 
         public RelayCommand Start { get; private set; }
         public RelayCommand Stop { get; private set; }
+
+        public RelayCommand Remove { get; private set; }
+
+        private void RemoveTask()
+        {
+            Messenger.Default.Send<TaskVM>(this, "RemoveTask");
+        }
 
         int Seconds { get; set; }
         internal TimeSpan TSpan;

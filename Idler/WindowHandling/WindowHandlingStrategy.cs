@@ -22,13 +22,17 @@ namespace Idler.WindowHandling
             {
 
                 case WindowTypes.AddTask:
-                    IOpenWindowStrategy = new SpecialDesignWindowHandling(mainWindow, adorner, dockPanel, tasksVM);
+                    IOpenWindowStrategy = new AddTaskWindowHandling(mainWindow, adorner, dockPanel, tasksVM);
                     break;
 
                 default:
                     break;
             }
-            IOpenWindowStrategy.CloseWindow();
+
+            if (IOpenWindowStrategy != null)
+            {
+                IOpenWindowStrategy.CloseWindow();
+            }
         }
 
     }

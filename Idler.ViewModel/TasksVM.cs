@@ -19,13 +19,11 @@ namespace Idler.ViewModel
         {
             Tasks = new ObservableCollection<TaskVM>();
             AddTask = new RelayCommand(addTask);
-            RemoveTask = new RelayCommand(removeTask);
-
-            //Tasks.Add(new TaskVM() { Name = "Damian" });
-            //Tasks.Add(new TaskVM() { Name = "Jusia" });
+            ClearTasks = new RelayCommand(clearTasks);
 
             Messenger.Default.Register<NotificationMessage>(this, "Save state", (message) => SaveState(message));
             Messenger.Default.Register<NotificationMessage>(this, "Get state", (message) => GetState(message));
+            Messenger.Default.Register<TaskVM>(this, "RemoveTask", (message) => RemoveTask(message));
         }
 
         private void SaveState(NotificationMessage message)
@@ -50,7 +48,7 @@ namespace Idler.ViewModel
 
         public RelayCommand AddTask { get; private set; }
 
-        public RelayCommand RemoveTask { get; private set; }
+        public RelayCommand ClearTasks { get; private set; }
 
         ObservableCollection<TaskVM> tasks;
         public ObservableCollection<TaskVM> Tasks
@@ -65,25 +63,19 @@ namespace Idler.ViewModel
             }
         }
 
-        private AddTaskVM addTaskVM;
-
-        public AddTaskVM AddTaskVM
-        {
-            get { return addTaskVM; }
-            set { SetProperty(ref addTaskVM, value); }
-        }
-
-        private void removeTask()
+        private void clearTasks()
         {
             Tasks.Clear();
+        }
+
+        private void RemoveTask(TaskVM message)
+        {
+            Tasks.Remove(tasks.First(t => t.Id == message.Id));
         }
 
         private void addTask()
         {
             Messenger.Default.Send(WindowTypes.AddTask);
-            //Tasks.Add(new TaskVM() { Name = "The one", Id = Tasks.Count + 1 });
-
-
         }
     }
 

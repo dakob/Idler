@@ -29,7 +29,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Start" Width="Auto">
+                    <GridViewColumn Header="Start" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label x:Name="dStart" Content="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" />
@@ -37,7 +37,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Elapsed" Width="Auto">
+                    <GridViewColumn Header="Elapsed" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label x:Name="Elapsed" Content="{Binding TimeSpan, UpdateSourceTrigger=PropertyChanged}" />
@@ -45,17 +45,24 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     
-                    <GridViewColumn Header="Start" Width="Auto">
+                    <GridViewColumn Header="Start" Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button x:Name="Start" Content="Start" Command="{Binding Start}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Stop" Width="Auto">
+                    <GridViewColumn Header="Stop" Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button x:Name="Stop" Content="Stop" Command="{Binding Stop}"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remove" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

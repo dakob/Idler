@@ -73,13 +73,14 @@
     <Compile Include="AddTaskView.xaml.cs">
       <DependentUpon>AddTaskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ButtonHelper.cs" />
     <Compile Include="TasksGridView.xaml.cs">
       <DependentUpon>TasksGridView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="WindowHandling\GreyOutAdorner.cs" />
-    <Compile Include="WindowHandling\SpecialDesignWindowHandling.cs" />
+    <Compile Include="WindowHandling\AddTaskWindowHandling.cs" />
     <Compile Include="WindowHandling\WindowHandlingStrategy.cs" />
     <Page Include="AddTaskView.xaml">
       <SubType>Designer</SubType>
