@@ -31,7 +31,17 @@ namespace Idler.ViewModel
             IdleTasks tasks = new IdleTasks();
             foreach (var task in Tasks)
             {
-                tasks.Add(new IdleTask() { Name = task.Name });
+                tasks.Add(new IdleTask()
+                {
+                    Name = task.Name,
+                    SDay = task.DTStart.Day,
+                    SHour = task.DTStart.Hour,
+                    SMinutes = task.DTStart.Minute,
+                    SMonth = task.DTStart.Month,
+                    EHour = task.DTStop.Hour,
+                    EMinutes = task.DTStop.Minute
+
+                });
             }
             new Serializer().SaveState(tasks);
         }
@@ -42,7 +52,13 @@ namespace Idler.ViewModel
             Tasks = new ObservableCollection<TaskVM>();
             foreach (var task in tasks)
             {
-                Tasks.Add(new TaskVM() { Name = task.Name });
+                Tasks.Add(new TaskVM()
+                {
+                    Name = task.Name,
+                    DTStart = new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0),
+                    DateStart = new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0).ToShortDateString() + "/" + new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0).ToLongTimeString(),
+                DTStop = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, task.EHour, task.EMinutes, 0)
+                });
             }
         }
 

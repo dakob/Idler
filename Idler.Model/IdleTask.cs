@@ -11,6 +11,16 @@ namespace Idler.Model
     {
         public virtual string Name { get; set; }
 
-       
+        public int SDay { get; set; }
+
+        public int SMonth { get; set; }
+
+        public int SHour { get; set; }
+
+        public int SMinutes { get; set; }
+
+        public int EHour { get; set; }
+
+        public int EMinutes { get; set; }
     }
 }
