@@ -9,6 +9,10 @@ namespace Idler.ViewModel
 {
     public class TaskVM : BindableBase
     {
+        public RelayCommand Start { get; private set; }
+        public RelayCommand Stop { get; private set; }
+        public RelayCommand Remove { get; private set; }
+
         public TaskVM()
         {
             Start = new RelayCommand(TimerStart);
@@ -25,14 +29,11 @@ namespace Idler.ViewModel
         {
             get
             {
-                return dateStart;
+                return DateTimeStart.ToShortDateString() + "/" + DateTimeStart.ToLongTimeString();
             }
             set
             {
-                if (String.IsNullOrEmpty(dateStart))
-                {
-                    SetProperty(ref dateStart, value);
-                }
+                SetProperty(ref dateStart, value);
             }
         }
 
@@ -41,7 +42,7 @@ namespace Idler.ViewModel
         {
             get
             {
-                return timeSpan;
+                return String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", TSpan.Days, TSpan.Hours, TSpan.Minutes, TSpan.Seconds);
             }
             set
             {
@@ -49,43 +50,26 @@ namespace Idler.ViewModel
             }
         }
 
-        string name;
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                SetProperty(ref name, value);
-            }
-        }
+        public string Name { get; set; }
 
-        public RelayCommand Start { get; private set; }
-        public RelayCommand Stop { get; private set; }
-
-        public RelayCommand Remove { get; private set; }
 
         private void RemoveTask()
         {
             Messenger.Default.Send<TaskVM>(this, "RemoveTask");
         }
 
-        int Seconds { get; set; }
         internal TimeSpan TSpan;
 
-        private DateTime? dtStart = null;
-        internal DateTime DTStart
+        private DateTime? dateTimeStart = null;
+        internal DateTime DateTimeStart
         {
             get
-            { return dtStart.Value; }
+            { return dateTimeStart.Value; }
             set
             {
-                if (dtStart == null)
-                {
-                    dtStart = value;
-                }
+                dateTimeStart = value;
             }
         }
-        internal DateTime DTStop;
 
         #region Timer
 
@@ -94,9 +78,13 @@ namespace Idler.ViewModel
         {
             if (Status == Enums.Status.Pause || Status == Enums.Status.NotStarted)
             {
-               Status = Enums.Status.Run;
-                DTStart = DateTime.Now;
-                DateStart = DTStart.ToShortDateString() + "/" + DTStart.ToLongTimeString();
+                if (Status == Enums.Status.NotStarted)
+                {
+                    DateTimeStart = DateTime.Now;
+                    DateStart = DateTimeStart.ToShortDateString() + "/" + DateTimeStart.ToLongTimeString();
+                }
+
+                Status = Enums.Status.Run;
                 TaskTimer = new TaskTimer();
                 TaskTimer.Run(this);
             }

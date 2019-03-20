@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Idler.Model;
+﻿using Idler.Model;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Idler.ViewModel
 {
@@ -28,11 +23,20 @@ namespace Idler.ViewModel
                 var jsonObject = JsonConvert.DeserializeObject<IdleTasks>(content[0]);
                 foreach (var task in jsonObject)
                 {
-                    idleTasks.Add(new IdleTask() { Name = task.Name });
+                    idleTasks.Add(new IdleTask() {
+                        Name = task.Name,
+                        EndDay = task.EndDay,
+                        EndHour = task.EndHour,
+                        EndMinutes = task.EndMinutes,
+                        StartDay = task.StartDay,
+                        StartHour = task.StartHour,
+                        StartMinutes = task.StartMinutes,
+                        StartMonth = task.StartMonth,
+                        StartYear = task.StartYear });
                 }
 
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
             }
 

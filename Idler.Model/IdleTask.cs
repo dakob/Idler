@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using Shared;
 
 namespace Idler.Model
 {
@@ -11,16 +6,22 @@ namespace Idler.Model
     {
         public virtual string Name { get; set; }
 
-        public int SDay { get; set; }
+        public int StartYear { get; set; }
 
-        public int SMonth { get; set; }
+        public int StartDay { get; set; }
 
-        public int SHour { get; set; }
+        public int StartMonth { get; set; }
 
-        public int SMinutes { get; set; }
+        public int StartHour { get; set; }
 
-        public int EHour { get; set; }
+        public int StartMinutes { get; set; }
 
-        public int EMinutes { get; set; }
+        public int EndDay { get; set; }
+
+        public int EndHour { get; set; }
+
+        public int EndMinutes { get; set; }
+
+        public Enums.Status Status { get; set; }
     }
 }

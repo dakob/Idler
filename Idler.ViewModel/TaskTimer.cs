@@ -16,6 +16,7 @@ namespace Idler.Timer
         public void Run(TaskVM taskVM)
         {
             TaskVM = taskVM;
+            TaskVM.Status = Shared.Enums.Status.Run;
             t = new System.Timers.Timer(1000)
             {
                 AutoReset = true
@@ -27,13 +28,18 @@ namespace Idler.Timer
         public void T_Elapsed(object sender, ElapsedEventArgs e)
         {
             TaskVM.TSpan = TaskVM.TSpan.Add(new TimeSpan(0, 0, 1));
-            TaskVM.TimeSpan = String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", TaskVM.TSpan.Days, TaskVM.TSpan.Hours, TaskVM.TSpan.Minutes, TaskVM.TSpan.Seconds);
+            updateTimeSpan();
         }
 
         public void Stop()
         {
             t.Stop();
+            updateTimeSpan();
+            TaskVM.Status = Shared.Enums.Status.Stoped;
+        }
 
+        private void updateTimeSpan()
+        {
             TaskVM.TimeSpan = String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", TaskVM.TSpan.Days, TaskVM.TSpan.Hours, TaskVM.TSpan.Minutes, TaskVM.TSpan.Seconds);
         }
     }

@@ -21,12 +21,12 @@ namespace Idler.ViewModel
             AddTask = new RelayCommand(addTask);
             ClearTasks = new RelayCommand(clearTasks);
 
-            Messenger.Default.Register<NotificationMessage>(this, "Save state", (message) => SaveState(message));
+            Messenger.Default.Register<NotificationMessage>(this, "Save state", (message) => PutState(message));
             Messenger.Default.Register<NotificationMessage>(this, "Get state", (message) => GetState(message));
             Messenger.Default.Register<TaskVM>(this, "RemoveTask", (message) => RemoveTask(message));
         }
 
-        private void SaveState(NotificationMessage message)
+        private void PutState(NotificationMessage message)
         {
             IdleTasks tasks = new IdleTasks();
             foreach (var task in Tasks)
@@ -34,13 +34,14 @@ namespace Idler.ViewModel
                 tasks.Add(new IdleTask()
                 {
                     Name = task.Name,
-                    SDay = task.DTStart.Day,
-                    SHour = task.DTStart.Hour,
-                    SMinutes = task.DTStart.Minute,
-                    SMonth = task.DTStart.Month,
-                    EHour = task.DTStop.Hour,
-                    EMinutes = task.DTStop.Minute
-
+                    StartDay = task.DateTimeStart.Day,
+                    StartHour = task.DateTimeStart.Hour,
+                    StartMinutes = task.DateTimeStart.Minute,
+                    StartMonth = task.DateTimeStart.Month,
+                    EndHour = task.TSpan.Hours,
+                    EndDay = task.TSpan.Days,
+                    EndMinutes = task.TSpan.Minutes,
+                    Status = task.Status
                 });
             }
             new Serializer().SaveState(tasks);
@@ -52,13 +53,23 @@ namespace Idler.ViewModel
             Tasks = new ObservableCollection<TaskVM>();
             foreach (var task in tasks)
             {
+                var dt = new DateTime(
+                       task.StartYear == 0 ? DateTime.Now.Year : task.StartYear,
+                       task.StartMonth == 0 ? DateTime.Now.Month : task.StartMonth,
+                       task.StartDay == 0 ? DateTime.Now.Day : task.StartDay,
+                       task.StartHour,
+                       task.StartMinutes,
+                       0);
+
                 Tasks.Add(new TaskVM()
                 {
                     Name = task.Name,
-                    DTStart = new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0),
-                    DateStart = new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0).ToShortDateString() + "/" + new DateTime(DateTime.Now.Year, task.SMonth == 0 ? DateTime.Now.Month : task.SMonth, task.SDay == 0 ? DateTime.Now.Day : task.SDay, task.SHour, task.SMinutes, 0).ToLongTimeString(),
-                DTStop = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, task.EHour, task.EMinutes, 0)
-                });
+
+                    DateTimeStart = dt,
+                    TSpan = new TimeSpan(task.EndHour, task.EndMinutes, 0),
+                    TimeSpan = String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", 0, task.EndHour, task.EndMinutes, 0),
+                    Status = task.Status
+            });
             }
         }
 
