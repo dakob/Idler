@@ -23,5 +23,7 @@ namespace Idler.Model
         public int EndMinutes { get; set; }
 
         public Enums.Status Status { get; set; }
+
+        public string StatusText { get; set; }
     }
 }

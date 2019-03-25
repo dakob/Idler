@@ -41,7 +41,8 @@ namespace Idler.ViewModel
                     EndHour = task.TSpan.Hours,
                     EndDay = task.TSpan.Days,
                     EndMinutes = task.TSpan.Minutes,
-                    Status = task.Status
+                    Status = task.Status,
+                    StatusText = task.StatusText
                 });
             }
             new Serializer().SaveState(tasks);
@@ -68,7 +69,8 @@ namespace Idler.ViewModel
                     DateTimeStart = dt,
                     TSpan = new TimeSpan(task.EndHour, task.EndMinutes, 0),
                     TimeSpan = String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", 0, task.EndHour, task.EndMinutes, 0),
-                    Status = task.Status
+                    Status = task.Status,
+                    StatusText = task.StatusText
             });
             }
         }

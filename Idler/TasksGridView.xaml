@@ -35,24 +35,25 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Start" Width="40">
+                    <GridViewColumn Header="Status" Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="Start" Content="Start" Command="{Binding Start}"  />
+                                <StackPanel>
+                                <Button x:Name="Start" Content="{Binding StatusText}" Command="{Binding StartPause}"  />
+                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Stop" Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="Stop" Content="Stop" Command="{Binding Stop}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Remove" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
