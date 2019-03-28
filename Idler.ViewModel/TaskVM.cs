@@ -28,7 +28,14 @@ namespace Idler.ViewModel
             {
                 if (SetProperty(ref status, value))
                 {
-                    StatusText = status.ToString();
+                    if(status == Enums.Status.NotStarted || status == Enums.Status.Pause)
+                    {
+                        StatusText = Enums.Status.Run.ToString();
+                    }
+                    else if(status == Enums.Status.Run)
+                    {
+                        StatusText = Enums.Status.Pause.ToString();
+                    }
                 }
             }
         }
@@ -73,7 +80,8 @@ namespace Idler.ViewModel
 
         #region Timer
 
-        TaskTimer TaskTimer;
+        PreciseTimer PreciseTimer;
+
         public void TimerStart()
         {
             if (Status == Enums.Status.Pause || Status == Enums.Status.NotStarted)
@@ -85,12 +93,12 @@ namespace Idler.ViewModel
                 }
 
                 Status = Enums.Status.Run;
-                TaskTimer = new TaskTimer();
-                TaskTimer.Run(this);
+                PreciseTimer = new PreciseTimer();
+                PreciseTimer.Run(this);
             }
             else if(Status == Enums.Status.Run)
             {
-                TaskTimer.Stop();
+                PreciseTimer.Stop();
                 Status = Enums.Status.Pause;
             }
         }

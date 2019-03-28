@@ -23,11 +23,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Task Name" FontSize="16" TextOptions.TextHintingMode="Animated">
-            </Label>
-            <TextBox Grid.Row="1" Text="{Binding Name}"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
-                <Button Command="{Binding OKCommand}" Width="130" my:ButtonHelper.DialogResult="True"  Content="OK" Margin="183,0,0,0" />
+            <Label Content="Task Name" FontSize="16" TextOptions.TextHintingMode="Animated" />
+
+
+            <TextBox Grid.Row="1" Text="{Binding Name}" FontSize="16" FontFamily="Arial" />
+
+            <StackPanel Orientation="Horizontal" Grid.Row="3" >
+                <Button Command="{Binding OKCommand}" Width="130" my:ButtonHelper.DialogResult="True"  Content="OK" Margin="179,0,0,0" />
                 <Button Command="{Binding CancelCommand}" Width="130" my:ButtonHelper.DialogResult="False" Content="Cancel"  Margin="8,0" />
             </StackPanel>
         </Grid>

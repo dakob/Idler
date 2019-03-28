@@ -16,17 +16,17 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
+        
         <local:TasksGridView />
-        <StackPanel Grid.Row="1">
-            <Border BorderThickness="2" Padding="2" Margin="1" Background="AliceBlue">
-
-                <TextBlock Name="Notes" Margin="1" HorizontalAlignment="Left" VerticalAlignment="Top" >
-
-                </TextBlock>
+        
+        <WrapPanel Grid.Row="1">
+            <Border BorderThickness="2" Padding="2" Margin="1" Background="Red">
+                <TextBlock Name="Notes" Margin="1" HorizontalAlignment="Stretch" Width="130" Height="70"  VerticalAlignment="Stretch" />
             </Border>
-        </StackPanel>
+        </WrapPanel>
+        
         <DockPanel Name="DockPanel" Grid.Row="2">
-        <Button HorizontalAlignment="Right"
+            <Button HorizontalAlignment="Right"
                     Content="Add"
                     Command ="{Binding AddTask}" Height="25" Width="65" Margin="3"/>
 
