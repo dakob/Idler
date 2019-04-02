@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Idler"
              xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"   
-             mc:Ignorable="d" MinHeight="400" MinWidth="600" Height="Auto">
+             mc:Ignorable="d" MinHeight="100" MinWidth="100">
 
     <StackPanel>
         <ListView ItemsSource="{Binding Tasks}" Height="Auto">
@@ -38,22 +38,14 @@
                     <GridViewColumn Header="Status" Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <StackPanel>
                                 <Button x:Name="Start" Content="{Binding StatusText}" Command="{Binding StartPause}"  />
-                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Stop" Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Remove" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
+                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

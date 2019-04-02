@@ -11,7 +11,7 @@
     <Window.DataContext>
         <ViewModels:TaskVM Name=""/>
     </Window.DataContext>
-    <Grid>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=TaskName}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -26,7 +26,7 @@
             <Label Content="Task Name" FontSize="16" TextOptions.TextHintingMode="Animated" />
 
 
-            <TextBox Grid.Row="1" Text="{Binding Name}" FontSize="16" FontFamily="Arial" />
+            <TextBox Name="TaskName" Grid.Row="1" Text="{Binding Name}" FontSize="16" FontFamily="Arial" />
 
             <StackPanel Orientation="Horizontal" Grid.Row="3" >
                 <Button Command="{Binding OKCommand}" Width="130" my:ButtonHelper.DialogResult="True"  Content="OK" Margin="179,0,0,0" />
