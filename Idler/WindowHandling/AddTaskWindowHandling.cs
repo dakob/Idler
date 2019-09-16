@@ -30,7 +30,7 @@ namespace Idler.WindowHandling
         public void OpenWindow()
         {
             AttachAdorner(dockPanel, adorner);
-            TaskVM taskVM = new TaskVM();
+            TaskVM taskVM = new TaskVM(null);
             var addTask = new AddTaskView()
             {
                 Owner = GetWindow(mainWindow), DataContext = taskVM

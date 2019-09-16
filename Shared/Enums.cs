@@ -13,7 +13,8 @@ namespace Shared
             NotStarted,
             Run,
             Pause,
-            Stoped
+            Completed,
+
 
         }
 
