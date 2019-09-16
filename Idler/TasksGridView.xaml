@@ -30,7 +30,7 @@
                     <GridViewColumn Header="Elapsed" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label x:Name="Elapsed" Content="{Binding TimeSpan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <Label x:Name="Elapsed" Content="{Binding TimeSpan, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -45,7 +45,7 @@
                     <GridViewColumn Header="Remove" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="Stop" Content="Stop" Command="{Binding Remove}"  />
+                                <Button x:Name="Stop" Content="Complete" Command="{Binding Remove}"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

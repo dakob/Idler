@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Idler.ViewModel.Interfaces;
 
-namespace Idler.ViewModel
+namespace Idler.ViewModel.Implementations
 {
-    class PreciseTimer
+    internal class PreciseTimer : ITimer
     {
         private int mTimerId;
         private TimerEventHandler mHandler;  // NOTE: declare at class scope so garbage collector doesn't release it!!!
 
-        TaskVM TaskVM;
+        public TaskVM TaskVM { get; set; }
 
         public void Run(TaskVM taskVM)
         {
@@ -29,16 +30,14 @@ namespace Idler.ViewModel
             System.Threading.Thread.Sleep(100);
 
             updateTimeSpan();
-            TaskVM.Status = Shared.Enums.Status.Stoped;
+            TaskVM.Status = Shared.Enums.Status.Completed;
         }
 
-       // private delegate void TestEventHandler(int tick, TimeSpan span);
         private void TimerCallback(int id, int msg, IntPtr user, int dw1, int dw2)
         {
             TaskVM.TSpan = TaskVM.TSpan.Add(new TimeSpan(0, 0, 1));
             updateTimeSpan();
         }
-
         private void updateTimeSpan()
         {
             TaskVM.TimeSpan = String.Format("{0:0}D/{1:00}:{2:00}.{3:00}", TaskVM.TSpan.Days, TaskVM.TSpan.Hours, TaskVM.TSpan.Minutes, TaskVM.TSpan.Seconds);

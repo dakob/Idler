@@ -53,10 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PreciseTimer.cs" />
+    <Compile Include="Interfaces\IPreciseTimer.cs" />
+    <Compile Include="Implementations\PreciseTimer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TasksVM.cs" />
-    <Compile Include="TaskTimer.cs" />
+    <Compile Include="Implementations\TaskTimer.cs" />
     <Compile Include="TaskVM.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
-using Idler.Timer;
+using Idler.ViewModel.Interfaces;
 using Shared;
 using System;
 
@@ -12,10 +13,17 @@ namespace Idler.ViewModel
         public RelayCommand Stop { get; private set; }
         public RelayCommand Remove { get; private set; }
 
-        public TaskVM()
+        private ITimer timer;
+
+        public TaskVM(): this(SimpleIoc.Default.GetInstance<ITimer>())
+        {
+        }
+        public TaskVM(ITimer timer)
         {
             StartPause = new RelayCommand(TimerStart);
             Remove = new RelayCommand(RemoveTask);
+            this.timer = timer ?? throw new ArgumentException("Lack of implementation ITimer");
+            this.timer.TaskVM = this;
         }
 
         public int Id { get; set; }
@@ -28,14 +36,16 @@ namespace Idler.ViewModel
             {
                 if (SetProperty(ref status, value))
                 {
-                    if(status == Enums.Status.NotStarted || status == Enums.Status.Pause)
+                    if (status == Enums.Status.NotStarted || status == Enums.Status.Pause)
                     {
                         StatusText = Enums.Status.Run.ToString();
                     }
-                    else if(status == Enums.Status.Run)
+                    else if (status == Enums.Status.Run)
                     {
                         StatusText = Enums.Status.Pause.ToString();
                     }
+                    else
+                        StatusText = status.ToString();
                 }
             }
         }
@@ -80,8 +90,6 @@ namespace Idler.ViewModel
 
         #region Timer
 
-        PreciseTimer PreciseTimer;
-
         public void TimerStart()
         {
             if (Status == Enums.Status.Pause || Status == Enums.Status.NotStarted)
@@ -93,12 +101,11 @@ namespace Idler.ViewModel
                 }
 
                 Status = Enums.Status.Run;
-                PreciseTimer = new PreciseTimer();
-                PreciseTimer.Run(this);
+                timer.Run(this);
             }
             else if(Status == Enums.Status.Run)
             {
-                PreciseTimer.Stop();
+                timer.Stop();
                 Status = Enums.Status.Pause;
             }
         }

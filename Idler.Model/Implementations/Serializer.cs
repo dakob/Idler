@@ -1,19 +1,16 @@
-﻿using Idler.Model;
+﻿using Idler.Model.Interfces;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Idler.ViewModel
+namespace Idler.Model.Implementations
 {
-    public class Serializer
+    public class JsonSerializer : ISerializer
     {
-        private IdleTasks tasks;
-
         public void SaveState(IdleTasks tasks)
         {
             var json = JsonConvert.SerializeObject(tasks);
             File.WriteAllLines("IdlerState.json", new[] { json });
         }
-
         public IdleTasks GetState()
         {
             IdleTasks idleTasks = new IdleTasks();
@@ -23,7 +20,8 @@ namespace Idler.ViewModel
                 var jsonObject = JsonConvert.DeserializeObject<IdleTasks>(content[0]);
                 foreach (var task in jsonObject)
                 {
-                    idleTasks.Add(new IdleTask() {
+                    idleTasks.Add(new IdleTask()
+                    {
                         Name = task.Name,
                         EndDay = task.EndDay,
                         EndHour = task.EndHour,
@@ -32,7 +30,8 @@ namespace Idler.ViewModel
                         StartHour = task.StartHour,
                         StartMinutes = task.StartMinutes,
                         StartMonth = task.StartMonth,
-                        StartYear = task.StartYear });
+                        StartYear = task.StartYear
+                    });
                 }
 
             }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Idler"
         xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
-        Title="Idler" Height="400" Width="600" ResizeMode="CanMinimize" ShowInTaskbar="False">
+        Title="Idler" Height="400" Width="600" ResizeMode="CanMinimize" ShowInTaskbar="True">
     <Window.DataContext>
         <ViewModels:TasksVM/>
     </Window.DataContext>
