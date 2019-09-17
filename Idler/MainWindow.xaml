@@ -6,35 +6,40 @@
         xmlns:local="clr-namespace:Idler"
         xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
-        Title="Idler" Height="400" Width="600" ResizeMode="CanMinimize" ShowInTaskbar="True">
+        Title="Idler" Icon="Resources\icons8-toucan-64.png" Height="400" Width="600" ResizeMode="CanMinimize" ShowInTaskbar="True">
     <Window.DataContext>
         <ViewModels:TasksVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="0" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
         <ScrollViewer>
-            <local:TasksGridView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <local:TasksGridView HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1">
+            <local:TasksGridView HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
         </ScrollViewer>
         
-        <WrapPanel Grid.Row="1">
-            <Border BorderThickness="2" Padding="2" Margin="1" Background="Red">
-                <TextBlock Name="Notes" Margin="1" HorizontalAlignment="Stretch" Width="130" Height="70"  VerticalAlignment="Stretch" />
-            </Border>
-        </WrapPanel>
-        
-        <DockPanel Name="DockPanel" Grid.Row="2">
+        <GroupBox x:Name="Notes" Grid.Row="2">
+            <TextBox Margin="0, 0, 11, 0" />
+        </GroupBox>
+
+        <DockPanel Name="DockPanel" Grid.Row="3">
             <Button HorizontalAlignment="Right"
-                    Content="Add"
-                    Command ="{Binding AddTask}" Height="25" Width="65" Margin="3"/>
+                    Command ="{Binding AddTask}" Margin="3">
+                <Image Source="Resources\icons8-add-32.png"></Image>
+            </Button>
 
             <Button HorizontalAlignment="Right" 
-                    Content="Clear"
-                    Command ="{Binding RemoveTask}" Height="25" Width="65" Margin="3"/>
+                    Command ="{Binding RemoveTask}" Margin="3">
+                <Image Source="Resources\icons8-settings-32.png"></Image>
+            </Button>
         </DockPanel>
     </Grid>
 </Window>

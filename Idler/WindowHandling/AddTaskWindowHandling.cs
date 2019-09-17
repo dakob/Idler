@@ -13,7 +13,7 @@ namespace Idler.WindowHandling
     class AddTaskWindowHandling : Window, IOpenWindow
     {
         private readonly Window mainWindow;
-       private readonly DockPanel dockPanel;
+        private readonly DockPanel dockPanel;
         private readonly GreyOutAdorner adorner;
         readonly TasksVM TasksVM;
 
@@ -30,14 +30,15 @@ namespace Idler.WindowHandling
         public void OpenWindow()
         {
             AttachAdorner(dockPanel, adorner);
-            TaskVM taskVM = new TaskVM(null);
+            TaskVM taskVM = new TaskVM();
             var addTask = new AddTaskView()
             {
-                Owner = GetWindow(mainWindow), DataContext = taskVM
-                
+                Owner = GetWindow(mainWindow),
+                DataContext = taskVM
+
             };
 
-            if(addTask.ShowDialog().Value)
+            if (addTask.ShowDialog().Value)
             {
                 TasksVM.Tasks.Add(taskVM);
             }

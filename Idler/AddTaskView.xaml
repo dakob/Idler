@@ -8,9 +8,9 @@
         xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"
         mc:Ignorable="d"
         Title="New Task" Height="173" Width="474" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <ViewModels:TaskVM Name=""/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <Grid FocusManager.FocusedElement="{Binding ElementName=TaskName}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

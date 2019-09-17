@@ -7,50 +7,48 @@
              xmlns:ViewModels="clr-namespace:Idler.ViewModel;assembly=Idler.ViewModel"   
              mc:Ignorable="d" MinHeight="100" MinWidth="100">
 
-    <StackPanel>
-        <ListView ItemsSource="{Binding Tasks}" Height="Auto">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Task" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label x:Name="Title" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+    <ListView ItemsSource="{Binding Tasks}" Height="Auto">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Task" Width="150">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label x:Name="Title" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                    <GridViewColumn Header="Start" Width="150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label x:Name="dStart" Content="{Binding DateStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <GridViewColumn Header="Start" Width="150">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label x:Name="dStart" Content="{Binding DateStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                    <GridViewColumn Header="Elapsed" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label x:Name="Elapsed" Content="{Binding TimeSpan, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <GridViewColumn Header="Elapsed" Width="100">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label x:Name="Elapsed" Content="{Binding TimeSpan, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                    <GridViewColumn Header="Status" Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="Start" Content="{Binding StatusText}" Command="{Binding StartPause}"  />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Remove" Width="50">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="Stop" Content="Complete" Command="{Binding Remove}"  />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </StackPanel>
+                <GridViewColumn Header="Status" Width="40">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Start" Content="{Binding StatusText}" Command="{Binding StartPause}"  />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Remove" Width="50">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Stop" Content="Complete" Command="{Binding Remove}"  />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+            </GridView>
+        </ListView.View>
+    </ListView>
 </UserControl>
